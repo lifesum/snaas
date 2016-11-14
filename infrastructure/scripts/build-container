@@ -2,6 +2,7 @@
 
 echo "|> prepare env"
 export CWD=$(pwd)
+export GODEBUG=netdns=go # Force go resolver as our container doesn't ship the dependency.
 export REVISION=$(git rev-parse --short HEAD)
 source ~/.gimme/envs/gotip.env
 cd /home/ubuntu/.go_workspace/src/github.com/tapglue/snaas
@@ -13,7 +14,6 @@ go build \
 	cmd/gateway-http/*.go
 
 echo "|> build sims"
-export GODEBUG=netdns=go # Force go resolver as our container doesn't ship the dependency.
 go build \
 	-ldflags "-X main.revision=${REVISION}" \
 	-o sims_${CIRCLE_BUILD_NUM} \
