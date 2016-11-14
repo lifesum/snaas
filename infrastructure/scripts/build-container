@@ -13,6 +13,7 @@ go build \
 	cmd/gateway-http/*.go
 
 echo "|> build sims"
+export GODEBUG=netdns=go # Force go resolver as our container doesn't ship the dependency.
 go build \
 	-ldflags "-X main.revision=${REVISION}" \
 	-o sims_${CIRCLE_BUILD_NUM} \
