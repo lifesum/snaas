@@ -9,7 +9,7 @@ source ~/.gimme/envs/gotip.env
 
 echo "|> prepare directories"
 mkdir -p /home/ubuntu/.go_workspace/src/github.com/tapglue
-mv /home/ubuntu/snaas /home/ubuntu/.go_workspace/src/github.com/tapglue/snaas
+mv /home/ubuntu/snaas /home/ubuntu/.go_workspace/src/github.com/tapglue/
 
 echo "|> execute tests"
 cd /home/ubuntu/.go_workspace/src/github.com/tapglue/snaas
