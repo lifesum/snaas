@@ -6,7 +6,7 @@ export REVISION=$(git rev-parse --short HEAD)
 source ~/.gimme/envs/gotip.env
 
 echo "|> build gateway-http"
-docker \
+docker run \
 	-e GODEBUG=netdns=go \ # Force go resolver as our container doesn't ship the dependency.
 	--rm \
 	-v ~/.go_workspace:/go
@@ -18,7 +18,7 @@ docker \
 		cmd/gateway-http/*.go
 
 echo "|> build sims"
-docker \
+docker run \
 	-e GODEBUG=netdns=go \ # Force go resolver as our container doesn't ship the dependency.
 	--rm \
 	-v ~/.go_workspace:/go
